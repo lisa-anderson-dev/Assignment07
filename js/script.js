@@ -76,10 +76,13 @@ form.addEventListener('submit', (e) => {
 
 table.addEventListener('click', (e) => {
     let targetRow = e.target.parentElement.tagName === 'TD' ? e.target.parentElement.parentElement : e.target.parentElement;
-    let deleteName = targetRow.children[1].innerText;
-    if (confirm(`Are you sure you want to delete ${deleteName}?`)) {
-        table.deleteRow(targetRow.rowIndex);
-        count--;
-        document.querySelector('#empCount').innerText = count;
+    // PREVENT HEADER ROW FROM GETTING DELETED
+    if (targetRow.rowIndex > 0) {
+        let deleteName = targetRow.children[1].innerText;
+        if (confirm(`Are you sure you want to delete ${deleteName}?`)) {
+            table.deleteRow(targetRow.rowIndex);
+            count--;
+            document.querySelector('#empCount').innerText = count;
+        }
     }
 });
