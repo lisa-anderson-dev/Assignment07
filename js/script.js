@@ -9,7 +9,9 @@ let count = 0;
 document.querySelector('#empCount').innerText = count;
 
 // ADD EMPLOYEE
+
 form.addEventListener('submit', (e) => {
+
     // PREVENT FORM SUBMISSION
 
     e.preventDefault();
